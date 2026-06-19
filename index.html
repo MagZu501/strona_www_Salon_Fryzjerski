@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Anna — Fryzjer Damski | Lublin, os. Piękna</title>
+    <meta name="description" content="Salon Anna — fryzjer damski na osiedlu w Lublinie. Strzyżenie, koloryzacja, stylizacja. ul. Piękna 5, 20-861 Lublin. Umów wizytę telefonicznie.">
+    <meta name="theme-color" content="#9B4B5A">
+    <meta property="og:title" content="Salon Anna — Fryzjer Damski Lublin">
+    <meta property="og:description" content="Twój sąsiedzki salon fryzjerski. Profesjonalna pielęgnacja włosów w sercu osiedla.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/hero.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --rose: #9B4B5A;
+            --rose-dark: #7A3A47;
+            --rose-light: #D4A5AE;
+            --blush: #F7ECEE;
+            --chocolate: #3D2A22;
+            --chocolate-light: #F7F2EC;
+            --beige-dark: #EDE0D4;
+            --cream: #FDF8F5;
+            --warm-white: #FFFCFA;
+            --charcoal: #2C2426;
+            --muted: #6B5C60;
+            --gold: #C4A265;
+            --shadow: 0 4px 24px rgba(44, 36, 38, 0.08);
+            --shadow-lg: 0 12px 48px rgba(44, 36, 38, 0.12);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --nav-h: 100px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-h);
+        }
+
+        body {
+            font-family: 'Outfit', system-ui, sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: min(1120px, 100% - 2.5rem);
+            margin-inline: auto;
+        }
+
+        .nav .container,
+        .hero .container {
+            width: min(1120px, 100% - clamp(4rem, 8vw, 8rem));
+        }
+
+        /* ── Navigation ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: var(--nav-h);
+            display: flex;
+            align-items: center;
+            background: var(--chocolate-light);
+            box-shadow: 0 1px 0 rgba(60, 45, 35, 0.08);
+            transition: box-shadow var(--transition);
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 2px 16px rgba(44, 36, 38, 0.08);
+        }
+
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav__logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav__logo-img {
+            height: calc(var(--nav-h) - 24px);
+            width: auto;
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .nav__logo-img {
+                height: calc(var(--nav-h) - 36px);
+            }
+        }
+
+        .nav__links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav__links a {
+            position: relative;
+            color: var(--muted);
+            transition: color var(--transition);
+        }
+
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rose);
+            transition: width var(--transition);
+        }
+
+        .nav__links a:hover,
+        .nav__links a:focus-visible { color: var(--rose); }
+        .nav__links a:hover::after,
+        .nav__links a:focus-visible::after { width: 100%; }
+
+        .nav__burger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav__burger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav__burger.open span:nth-child(2) { opacity: 0; }
+        .nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            position: fixed;
+            inset: var(--nav-h) 0 0 0;
+            background: rgba(253, 248, 245, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        @media (min-width: 768px) {
+            .nav__links { display: flex; }
+            .nav__burger { display: none; }
+        }
+
+        /* ── Hero (Davida-style editorial) ── */
+        .hero {
+            min-height: 100svh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding-top: var(--nav-h);
+            overflow: hidden;
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero__bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44,36,38,0.82) 0%, rgba(44,36,38,0.35) 45%, rgba(44,36,38,0.15) 100%);
+        }
+
+        .hero__grid {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding-block: 4rem 5rem;
+        }
+
+        .hero__content { max-width: 42rem; }
+
+        .hero__visual { display: none; }
+
+        .hero__title {
+            font-size: clamp(2.6rem, 6.5vw, 4.8rem);
+            font-weight: 600;
+            line-height: 1.02;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero__title span { display: block; }
+
+        .hero__title em {
+            font-style: italic;
+            color: var(--rose-light);
+        }
+
+        .hero__lead {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.88);
+            max-width: 32rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.75;
+        }
+
+        .hero__trust-item { color: rgba(255,255,255,0.8); }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.75rem;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            min-height: 48px;
+            min-width: 48px;
+        }
+
+        .btn--primary {
+            background: var(--rose);
+            color: white;
+            box-shadow: 0 4px 16px rgba(155, 75, 90, 0.3);
+        }
+
+        .btn--primary:hover {
+            background: var(--rose-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(155, 75, 90, 0.35);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1.5px solid rgba(44, 36, 38, 0.15);
+        }
+
+        .btn--ghost:hover {
+            background: var(--warm-white);
+            border-color: var(--rose-light);
+        }
+
+        .hero .btn--ghost:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.5);
+            color: white;
+        }
+
+        .hero__trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .hero__trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .hero__trust-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .hero__visual {
+            position: relative;
+        }
+
+        .hero__img-wrap {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero__img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero__card {
+            position: absolute;
+            bottom: -1.5rem;
+            left: -1rem;
+            background: var(--warm-white);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 260px;
+        }
+
+        @media (max-width: 899px) {
+            .hero__card {
+                left: 1rem;
+                bottom: -1rem;
+            }
+        }
+
+        .hero__card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--blush);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+        }
+
+        .hero__card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .hero__card-sub {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* ── Sections ── */
+        section { padding-block: 5rem; }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            max-width: 32rem;
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── About (split editorial) ── */
+        .about {
+            background: var(--rose);
+            color: var(--warm-white);
+            padding-block: 0;
+            overflow: hidden;
+        }
+
+        .about .section-label {
+            color: var(--rose-light);
+        }
+
+        .about .section-title {
+            color: var(--warm-white);
+            font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .about .section-desc {
+            color: rgba(255, 252, 250, 0.88);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 32rem;
+        }
+
+        .about__grid {
+            display: grid;
+            gap: 0;
+            align-items: stretch;
+        }
+
+        @media (min-width: 768px) {
+            .about__grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .about__img {
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(220px, 42vw, 300px);
+        }
+
+        .about__img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 58%;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .about__img img {
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        .about__content {
+            padding: clamp(2.25rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        @media (min-width: 768px) {
+            .about__content {
+                padding-left: clamp(2rem, 4vw, 3.5rem);
+                padding-right: max(1.25rem, calc((100vw - min(1120px, 100vw - 2.5rem)) / 2));
+            }
+        }
+
+        .about__content-inner {
+            max-width: 34rem;
+        }
+
+        .about__lead {
+            margin-bottom: 1rem;
+        }
+
+        .about__stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.75rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .about__stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+            font-weight: 700;
+            color: var(--warm-white);
+            line-height: 1;
+        }
+
+        .about__stat-label {
+            font-size: 0.78rem;
+            color: rgba(255, 252, 250, 0.72);
+            margin-top: 0.35rem;
+            line-height: 1.35;
+        }
+
+        /* ── Service Categories (Davida-style) ── */
+        .svc-cats {
+            display: grid;
+            gap: 1px;
+            margin-top: 3rem;
+            background: rgba(155, 75, 90, 0.12);
+            border: 1px solid rgba(155, 75, 90, 0.12);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .svc-cats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .svc-cats { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .svc-cat {
+            background: var(--warm-white);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            transition: background var(--transition), transform var(--transition);
+            cursor: pointer;
+            border: none;
+            text-align: left;
+            font-family: inherit;
+            color: inherit;
+            width: 100%;
+        }
+
+        .svc-cat:hover {
+            background: var(--blush);
+            transform: translateY(-2px);
+        }
+
+        .svc-cat__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .svc-cat__title span { display: block; }
+
+        .svc-cat__more {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--rose);
+        }
+
+        .services__grid {
+            display: grid;
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .services__grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 900px) {
+            .services__grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .services__detail {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            border: 1px solid rgba(155, 75, 90, 0.08);
+            display: none;
+            animation: msgIn 0.35s ease;
+        }
+
+        .services__detail.active { display: block; }
+
+        .services__detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .services__detail-desc {
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+            font-weight: 300;
+        }
+
+        .services__detail-list {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .services__detail-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(155, 75, 90, 0.06);
+            font-size: 0.95rem;
+        }
+
+        .services__detail-list li span:last-child {
+            font-weight: 600;
+            color: var(--rose);
+            white-space: nowrap;
+        }
+
+        .service-card {
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid rgba(155, 75, 90, 0.06);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card__icon {
+            width: 52px;
+            height: 52px;
+            background: var(--blush);
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-card__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card__desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .service-card__price {
+            font-weight: 600;
+            color: var(--rose);
+            font-size: 1.05rem;
+        }
+
+        .service-card__price span {
+            font-weight: 300;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* ── Gallery (horizontal scroll) ── */
+        .gallery {
+            background: var(--chocolate);
+            color: var(--cream);
+        }
+
+        .gallery .section-label {
+            color: var(--rose-light);
+        }
+
+        .gallery .section-title {
+            color: var(--warm-white);
+        }
+
+        .gallery .section-desc {
+            color: rgba(255, 252, 250, 0.72);
+        }
+
+        .gallery__slider {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-inline: max(1.25rem, calc((100vw - min(1120px, 100vw - 2.5rem)) / 2));
+        }
+
+        .gallery__track {
+            flex: 1;
+            min-width: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .gallery__track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery__nav {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: var(--rose);
+            color: white;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(155, 75, 90, 0.3);
+            transition: background var(--transition), transform var(--transition), opacity var(--transition);
+        }
+
+        .gallery__nav:hover:not(:disabled) {
+            background: var(--rose-dark);
+            transform: translateY(-2px);
+        }
+
+        .gallery__nav:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .gallery__nav svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .gallery__grid {
+            display: flex;
+            gap: 0.375rem;
+            width: max-content;
+        }
+
+        .gallery__item {
+            flex: 0 0 clamp(220px, 72vw, 300px);
+            aspect-ratio: 4/5;
+            scroll-snap-align: start;
+            border-radius: 0;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery__item:hover img { transform: scale(1.05); }
+
+        .gallery__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44,36,38,0.5), transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery__item:hover .gallery__overlay { opacity: 1; }
+
+        .gallery__caption {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 36, 38, 0.92);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-height: 85vh;
+            max-width: 90vw;
+            border-radius: var(--radius);
+            object-fit: contain;
+        }
+
+        .lightbox__close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+        }
+
+        /* ── Reviews ── */
+        .reviews__grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .review-card {
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid rgba(155, 75, 90, 0.06);
+        }
+
+        .review-card__stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .review-card__text {
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .review-card__author {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .review-card__meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* ── Hours & Contact ── */
+        .contact {
+            background: var(--beige-dark);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .contact__layout {
+            display: grid;
+            gap: 0;
+            align-items: stretch;
+        }
+
+        @media (min-width: 900px) {
+            .contact__layout { grid-template-columns: 1fr 1.15fr; }
+        }
+
+        .contact__aside {
+            padding: 5rem clamp(1.25rem, 4vw, 2.5rem) clamp(2.5rem, 5vw, 3rem);
+            padding-left: max(1.25rem, calc((100vw - min(1120px, 100vw - 2.5rem)) / 2));
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        @media (min-width: 900px) {
+            .contact__aside {
+                padding-right: 3rem;
+                padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+            }
+        }
+
+        .contact__info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact__item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact__icon {
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            font-size: 1.35rem;
+        }
+
+        .contact__label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact__value {
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .contact__value a {
+            color: var(--rose);
+            transition: color var(--transition);
+        }
+
+        .contact__value a:hover { color: var(--rose-dark); }
+
+        .hours-table {
+            width: auto;
+            max-width: 100%;
+            margin-top: 0.5rem;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr td {
+            padding: 0.35rem 0;
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        .hours-table tr td:first-child {
+            padding-right: 2.5rem;
+            white-space: nowrap;
+        }
+
+        .hours-table tr td:last-child {
+            text-align: left;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .hours-table tr td.closed {
+            color: var(--muted);
+        }
+
+        .contact__map {
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(240px, 45vw, 300px);
+            margin-right: max(1.25rem, calc((100vw - min(1120px, 100vw - 2.5rem)) / 2));
+            border: none;
+            box-shadow: none;
+        }
+
+        .contact__map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        @media (min-width: 900px) {
+            .contact__map {
+                min-height: 100%;
+            }
+
+            .contact__map iframe {
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        /* ── Footer (tylko stopka strony, nie <footer> w opiniach) ── */
+        body > footer {
+            padding: 3rem 0 2.5rem;
+            background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+            color: white;
+        }
+
+        .review-card footer {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .footer__inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            text-align: center;
+        }
+
+        .footer__copy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .footer__credit {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .footer__credit a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color var(--transition);
+        }
+
+        .footer__credit a:hover {
+            color: white;
+        }
+
+        /* ── Booking Modal ── */
+        .book-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(44, 36, 38, 0.65);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+        }
+
+        .book-modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .book-modal__card {
+            background: var(--warm-white);
+            border-radius: var(--radius-lg);
+            max-width: 440px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px) scale(0.96);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+
+        .book-modal.open .book-modal__card {
+            transform: translateY(0) scale(1);
+        }
+
+        .book-modal__img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .book-modal__body { padding: 1.75rem; }
+
+        .book-modal__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-modal__desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .book-modal__actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .book-modal__close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            color: var(--charcoal);
+            z-index: 2;
+            box-shadow: var(--shadow);
+        }
+
+        /* ── Contact Hub (Phone / Messenger) ── */
+        .contact-hub {
+            position: fixed;
+            bottom: 5.5rem;
+            right: 1.5rem;
+            z-index: 150;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-hub { bottom: 2rem; right: 2rem; }
+        }
+
+        .contact-hub__toggle {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: var(--rose);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            box-shadow: 0 6px 28px rgba(155, 75, 90, 0.45);
+            min-height: 56px;
+            min-width: 56px;
+            cursor: pointer;
+            transition: all var(--transition);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: white;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .contact-hub__toggle:active,
+        .contact-hub__action:active { transform: scale(0.96); }
+
+        .contact-hub__toggle-icon {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            transition: transform var(--transition);
+        }
+
+        .contact-hub.open .contact-hub__toggle-icon { transform: rotate(45deg); }
+
+        .contact-hub__toggle-text {
+            padding-right: 1.25rem;
+            white-space: nowrap;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-width var(--transition), opacity var(--transition), padding var(--transition);
+        }
+
+        .contact-hub:not(.open) .contact-hub__toggle-text {
+            max-width: 120px;
+            opacity: 1;
+        }
+
+        .contact-hub__menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: all var(--transition);
+        }
+
+        .contact-hub.open .contact-hub__menu {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .contact-hub__action {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 1.1rem 0.65rem 0.65rem;
+            border-radius: 100px;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            min-height: 48px;
+            transition: transform var(--transition), box-shadow var(--transition);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            white-space: nowrap;
+        }
+
+        .contact-hub__action:hover { transform: translateX(-4px); }
+
+        .contact-hub__action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .contact-hub__action-icon svg { width: 20px; height: 20px; }
+
+        .contact-hub__action--phone { background: var(--rose); }
+        .contact-hub__action--messenger { background: linear-gradient(135deg, #00B2FF, #006AFF); }
+
+        .contact-hub__toggle .phone-ring {
+            animation: ring 2s ease infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0); }
+            10% { transform: rotate(-12deg); }
+            20% { transform: rotate(12deg); }
+            30% { transform: rotate(-8deg); }
+            40% { transform: rotate(8deg); }
+            50% { transform: rotate(0); }
+        }
+
+        @keyframes typing {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-4px); }
+        }
+
+        /* ── Social Rails: zakładki Facebook + Instagram (prawa krawędź) ── */
+        .social-rails {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 140;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .social-tab {
+            pointer-events: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            width: 38px;
+            padding: 0.8rem 0.4rem;
+            color: white;
+            border: none;
+            border-radius: 10px 0 0 10px;
+            cursor: pointer;
+            transition: width 0.25s ease, box-shadow 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            font-family: inherit;
+            position: relative;
+        }
+
+        .social-tab:hover { width: 42px; }
+
+        .social-tab--fb { background: #1877F2; box-shadow: -2px 0 10px rgba(24, 119, 242, 0.2); }
+        .social-tab--fb:hover { box-shadow: -3px 0 14px rgba(24, 119, 242, 0.3); }
+
+        .social-tab--ig {
+            background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af);
+            box-shadow: -2px 0 10px rgba(193, 53, 132, 0.2);
+        }
+        .social-tab--ig:hover { box-shadow: -3px 0 14px rgba(193, 53, 132, 0.3); }
+
+        .social-tab svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .social-tab-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transform: rotate(180deg);
+            opacity: 0.9;
+        }
+
+        .social-tab-pulse {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 6px;
+            height: 6px;
+            background: #7CFC00;
+            border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.15);
+        }
+
+        .social-tab-pulse.hidden { display: none; }
+
+        .social-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 141;
+            width: min(380px, calc(100vw - 40px));
+            background: var(--warm-white);
+            box-shadow: -12px 0 48px rgba(44, 36, 38, 0.18);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border-left: 1px solid rgba(155, 75, 90, 0.1);
+            will-change: transform;
+        }
+
+        .social-panel.open { transform: translateX(0); }
+
+        .social-panel__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.15rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .social-panel__header--fb { background: linear-gradient(135deg, #1877F2, #0d5bbd); }
+        .social-panel__header--ig { background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af); }
+
+        .social-panel__heading { min-width: 0; }
+
+        .social-panel__title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .social-panel__subtitle {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            margin-top: 0.15rem;
+        }
+
+        .social-panel__close {
+            display: grid;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            font-size: 1.35rem;
+            color: white;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            place-items: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+
+        .social-panel__close:hover { background: rgba(255,255,255,0.28); }
+
+        .social-panel__feed {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #f0f2f5;
+            padding: 0.75rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--rose-light) transparent;
+        }
+
+        .social-panel__feed::-webkit-scrollbar { width: 5px; }
+        .social-panel__feed::-webkit-scrollbar-thumb {
+            background: var(--rose-light);
+            border-radius: 4px;
+        }
+
+        .social-panel__widget {
+            min-height: 480px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-panel__loader {
+            display: grid;
+            place-items: center;
+            gap: 0.75rem;
+            padding: 3rem 1rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .social-panel__loader-dots { display: flex; gap: 5px; }
+
+        .social-panel__loader-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: typing 1.2s infinite;
+        }
+
+        .social-panel__loader-dots--fb span { background: #1877F2; }
+        .social-panel__loader-dots--ig span { background: #dd2a7b; }
+        .social-panel__loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .social-panel__loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        .social-panel__footer {
+            padding: 0.85rem 1rem;
+            border-top: 1px solid rgba(155, 75, 90, 0.08);
+            background: var(--warm-white);
+            flex-shrink: 0;
+        }
+
+        .social-panel__link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1rem;
+            color: white;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background var(--transition), transform var(--transition), opacity var(--transition);
+        }
+
+        .social-panel__link--fb { background: #1877F2; }
+        .social-panel__link--fb:hover { background: #1464D0; transform: translateY(-1px); }
+
+        .social-panel__link--ig { background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af); }
+        .social-panel__link--ig:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        .social-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 36, 38, 0.45);
+            z-index: 139;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .social-backdrop.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 480px) {
+            .social-panel { width: min(380px, 100vw); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .social-panel { transition-duration: 0.01ms; }
+        }
+
+        /* Focus accessibility */
+        :focus-visible {
+            outline: 2px solid var(--rose);
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+        <div class="container nav__inner">
+            <a href="#" class="nav__logo" aria-label="Salon Anna — strona główna">
+                <img src="img/logo-anna.png" alt="Salon fryzjerski Anna — Lublin" class="nav__logo-img">
+            </a>
+            <ul class="nav__links">
+                <li><a href="#o-nas">O nas</a></li>
+                <li><a href="#uslugi">Usługi</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#opinie">Opinie</a></li>
+            </ul>
+            <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#o-nas" class="mobile-link">O nas</a>
+        <a href="#uslugi" class="mobile-link">Usługi</a>
+        <a href="#galeria" class="mobile-link">Galeria</a>
+        <a href="#opinie" class="mobile-link">Opinie</a>
+        <button type="button" class="btn btn--primary" data-open-booking>Zadzwoń teraz</button>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="hero__bg" aria-hidden="true">
+                <img src="img/hero.jpg" alt="" width="1920" height="1080" loading="eager">
+            </div>
+            <div class="container hero__grid">
+                <div class="hero__content reveal">
+                    <h1 class="hero__title serif">
+                        <span>Usługi fryzjerskie</span>
+                        <span>dopasowane do</span>
+                        <span><em>Twoich potrzeb</em></span>
+                    </h1>
+                    <p class="hero__lead">
+                        Od strzyżeń i koloryzacji po pielęgnację i stylizacje okolicznościowe —
+                        tworzymy fryzury, w których czujesz się sobą. Przytulny salon na osiedlu,
+                        bez pośpiechu i z kawą w dłoni.
+                    </p>
+                    <div class="hero__actions">
+                        <button type="button" class="btn btn--primary" data-open-booking>
+                            Umów wizytę
+                        </button>
+                        <a href="#uslugi" class="btn btn--ghost" style="color:white;border-color:rgba(255,255,255,0.35);">Zobacz usługi</a>
+                    </div>
+                    <div class="hero__trust">
+                        <div class="hero__trust-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            4.9 · 120+ opinii
+                        </div>
+                        <div class="hero__trust-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            ul. Piękna 5, Lublin
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about" id="o-nas">
+            <div class="about__grid">
+                <div class="about__img reveal">
+                    <img src="img/salon-exterior.jpg" alt="Salon Anna — salon fryzjerski na osiedlu w Lublinie" width="600" height="800" loading="lazy">
+                </div>
+                <div class="about__content reveal">
+                    <div class="about__content-inner">
+                        <span class="section-label">O nas</span>
+                        <h2 class="section-title serif">Salon z sąsiedztwa,<br>sercem w fachu</h2>
+                        <p class="section-desc about__lead">
+                            Nazywam się Anna i od ponad 15 lat dbam o włosy pań z naszego osiedla.
+                            Znam Wasze imiona, pamiętam ulubione odcienie i wiem, że czasem potrzebujecie
+                            po prostu chwili dla siebie.
+                        </p>
+                        <p class="section-desc">
+                            W salonie panuje swobodna, domowa atmosfera — bez pośpiechu,
+                            bez presji. Każda wizyta zaczyna się od rozmowy o tym, czego naprawdę potrzebują Twoje włosy.
+                        </p>
+                        <div class="about__stats">
+                            <div>
+                                <div class="about__stat-num">15+</div>
+                                <div class="about__stat-label">lat doświadczenia</div>
+                            </div>
+                            <div>
+                                <div class="about__stat-num">2k+</div>
+                                <div class="about__stat-label">zadowolonych klientek</div>
+                            </div>
+                            <div>
+                                <div class="about__stat-num">5★</div>
+                                <div class="about__stat-label">ocena Google</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services" id="uslugi">
+            <div class="container">
+                <div class="reveal" style="text-align: center; max-width: 36rem; margin-inline: auto;">
+                    <span class="section-label">Usługi</span>
+                    <h2 class="section-title serif">Co oferujemy</h2>
+                    <p class="section-desc" style="margin-inline: auto;">
+                        Wybierz kategorię, żeby zobaczyć szczegóły i cennik.
+                    </p>
+                </div>
+                <div class="svc-cats reveal">
+                    <button type="button" class="svc-cat" data-svc="cut">
+                        <h3 class="svc-cat__title"><span>Strzyżenie</span><span>& stylizacja</span></h3>
+                        <span class="svc-cat__more">Czytaj więcej →</span>
+                    </button>
+                    <button type="button" class="svc-cat" data-svc="color">
+                        <h3 class="svc-cat__title"><span>Koloryzacja</span><span>& refleksy</span></h3>
+                        <span class="svc-cat__more">Czytaj więcej →</span>
+                    </button>
+                    <button type="button" class="svc-cat" data-svc="care">
+                        <h3 class="svc-cat__title"><span>Pielęgnacja</span><span>włosów</span></h3>
+                        <span class="svc-cat__more">Czytaj więcej →</span>
+                    </button>
+                    <button type="button" class="svc-cat" data-svc="events">
+                        <h3 class="svc-cat__title"><span>Ślub</span><span>& okazje</span></h3>
+                        <span class="svc-cat__more">Czytaj więcej →</span>
+                    </button>
+                </div>
+                <div class="services__detail reveal" id="svcDetail-cut" data-svc-panel="cut">
+                    <h3 class="services__detail-title">Strzyżenie & stylizacja</h3>
+                    <p class="services__detail-desc">Modelowanie, grzywka, blow-out i upięcia na co dzień. Konsultacja zawsze w cenie.</p>
+                    <ul class="services__detail-list">
+                        <li><span>Strzyżenie damskie</span><span>od 80 zł</span></li>
+                        <li><span>Stylizacja / blow-out</span><span>od 60 zł</span></li>
+                        <li><span>Strzyżenie dzieci & nastolatki</span><span>od 50 zł</span></li>
+                    </ul>
+                </div>
+                <div class="services__detail" id="svcDetail-color" data-svc-panel="color">
+                    <h3 class="services__detail-title">Koloryzacja & refleksy</h3>
+                    <p class="services__detail-desc">Balayage, sombre, pełna koloryzacja i tonowanie. Pracujemy na farbach premium — dokładną wycenę ustalimy na miejscu.</p>
+                    <ul class="services__detail-list">
+                        <li><span>Koloryzacja / balayage</span><span>od 180 zł</span></li>
+                        <li><span>Tonowanie / odświeżenie</span><span>od 120 zł</span></li>
+                    </ul>
+                </div>
+                <div class="services__detail" id="svcDetail-care" data-svc-panel="care">
+                    <h3 class="services__detail-title">Pielęgnacja włosów</h3>
+                    <p class="services__detail-desc">Regeneracja, odbudowa i blask — maski, olejowanie, keratyna i botox na włosy.</p>
+                    <ul class="services__detail-list">
+                        <li><span>Zabieg pielęgnacyjny</span><span>od 50 zł</span></li>
+                        <li><span>Keratyna / botox</span><span>od 150 zł</span></li>
+                    </ul>
+                </div>
+                <div class="services__detail" id="svcDetail-events" data-svc-panel="events">
+                    <h3 class="services__detail-title">Ślub & okazje</h3>
+                    <p class="services__detail-desc">Fryzury ślubne, komunijne i na studniówkę. Próba fryzury w cenie pakietu.</p>
+                    <ul class="services__detail-list">
+                        <li><span>Fryzura okolicznościowa</span><span>od 250 zł</span></li>
+                        <li><span>Próba przed wydarzeniem</span><span>w cenie</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery" id="galeria">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">Galeria</span>
+                    <h2 class="section-title serif">Nasze prace mówią same</h2>
+                    <p class="section-desc">Kolory, faktury, metamorfozy — zobacz, co tworzymy na co dzień.</p>
+                </div>
+            </div>
+            <div class="gallery__slider">
+                <button type="button" class="gallery__nav gallery__nav--prev" id="galleryPrev" aria-label="Poprzednie zdjęcie" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="gallery__track" id="galleryTrack">
+                <div class="gallery__grid">
+                    <div class="gallery__item reveal" data-full="img/gallery-1.jpg">
+                        <img src="img/gallery-1.jpg" alt="Balayage — ciepłe refleksy na brązowych włosach" loading="lazy">
+                        <div class="gallery__overlay"><span class="gallery__caption">Balayage — ciepłe refleksy</span></div>
+                    </div>
+                    <div class="gallery__item reveal" data-full="img/gallery-2.jpg">
+                        <img src="img/gallery-2.jpg" alt="Precyzyjne strzyżenie w salonie" loading="lazy">
+                        <div class="gallery__overlay"><span class="gallery__caption">Precyzyjne strzyżenie</span></div>
+                    </div>
+                    <div class="gallery__item reveal" data-full="img/gallery-3.jpg">
+                        <img src="img/gallery-3.jpg" alt="Koloryzacja miedziano-miedziana" loading="lazy">
+                        <div class="gallery__overlay"><span class="gallery__caption">Koloryzacja miedziana</span></div>
+                    </div>
+                    <div class="gallery__item reveal" data-full="img/gallery-4.jpg">
+                        <img src="img/gallery-4.jpg" alt="Stylizacja fryzury w salonie" loading="lazy">
+                        <div class="gallery__overlay"><span class="gallery__caption">Stylizacja fryzury</span></div>
+                    </div>
+                    <div class="gallery__item reveal" data-full="img/gallery-5.jpg">
+                        <img src="img/gallery-5.jpg" alt="Metamorfoza kolorystyczna" loading="lazy">
+                        <div class="gallery__overlay"><span class="gallery__caption">Metamorfoza kolorystyczna</span></div>
+                    </div>
+                    <div class="gallery__item reveal" data-full="img/gallery-6.jpg">
+                        <img src="img/gallery-6.jpg" alt="Efekt pracy fryzjerskiej" loading="lazy">
+                        <div class="gallery__overlay"><span class="gallery__caption">Efekt pracy fryzjerskiej</span></div>
+                    </div>
+                </div>
+                </div>
+                <button type="button" class="gallery__nav gallery__nav--next" id="galleryNext" aria-label="Następne zdjęcie">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section id="opinie">
+            <div class="container">
+                <div class="reveal" style="text-align: center; max-width: 36rem; margin-inline: auto;">
+                    <span class="section-label">Opinie</span>
+                    <h2 class="section-title serif">Co mówią nasze klientki</h2>
+                </div>
+                <div class="reviews__grid">
+                    <blockquote class="review-card reveal">
+                        <div class="review-card__stars" aria-label="Ocena 5 na 5">★★★★★</div>
+                        <p class="review-card__text">„Chodzę do Ani od 8 lat i nie wyobrażam sobie innego fryzjera. Zawsze wychodzę z uśmiechem, a fryzura trzyma formę tygodniami."</p>
+                        <footer>
+                            <div class="review-card__author">Magdalena K.</div>
+                            <div class="review-card__meta">Stała klientka · osiedle</div>
+                        </footer>
+                    </blockquote>
+                    <blockquote class="review-card reveal">
+                        <div class="review-card__stars" aria-label="Ocena 5 na 5">★★★★★</div>
+                        <p class="review-card__text">„Pierwszy raz robiłam balayage i jestem zachwycona! Anna dokładnie wytłumaczyła proces i efekt przerósł moje oczekiwania."</p>
+                        <footer>
+                            <div class="review-card__author">Karolina W.</div>
+                            <div class="review-card__meta">Koloryzacja balayage</div>
+                        </footer>
+                    </blockquote>
+                    <blockquote class="review-card reveal">
+                        <div class="review-card__stars" aria-label="Ocena 5 na 5">★★★★★</div>
+                        <p class="review-card__text">„Super atmosfera, jak u koleżanki. Córka też chodzi na strzyżenie i zawsze wychodzi szczęśliwa. Polecam całe osiedle!"</p>
+                        <footer>
+                            <div class="review-card__author">Ewa i Zosia</div>
+                            <div class="review-card__meta">Mama i córka</div>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="kontakt">
+            <div class="contact__layout">
+                <div class="contact__aside">
+                    <div class="contact__intro reveal">
+                        <span class="section-label">Kontakt</span>
+                        <h2 class="section-title serif">Zapraszamy na osiedle</h2>
+                        <p class="section-desc">Zadzwoń lub napisz na Messenger — po sąsiedzku i bez stresu.</p>
+                    </div>
+                    <div class="contact__info reveal">
+                        <div class="contact__item">
+                            <div class="contact__icon" aria-hidden="true">📍</div>
+                            <div>
+                                <div class="contact__label">Adres</div>
+                                <div class="contact__value">ul. Piękna 5<br>20-861 Lublin</div>
+                            </div>
+                        </div>
+                        <div class="contact__item">
+                            <div class="contact__icon" aria-hidden="true">📞</div>
+                            <div>
+                                <div class="contact__label">Telefon</div>
+                                <div class="contact__value">
+                                    <a href="tel:+48811234567">+48 81 123 45 67</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact__item">
+                            <div class="contact__icon" aria-hidden="true">💬</div>
+                            <div>
+                                <div class="contact__label">Messenger</div>
+                                <div class="contact__value">
+                                    <a href="https://m.me/magda.zubik.1" target="_blank" rel="noopener">Napisz na Facebooku</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact__item">
+                            <div class="contact__icon" aria-hidden="true">🕐</div>
+                            <div>
+                                <div class="contact__label">Godziny otwarcia</div>
+                                <table class="hours-table">
+                                    <tr><td>Poniedziałek – Piątek</td><td>9:00 – 18:00</td></tr>
+                                    <tr><td>Sobota</td><td>8:00 – 14:00</td></tr>
+                                    <tr><td>Niedziela</td><td class="closed">Zamknięte</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact__map reveal">
+                    <iframe
+                        title="Mapa — Salon Anna, ul. Piękna 5, Lublin"
+                        src="https://maps.google.com/maps?q=ul.+Pi%C4%99kna+5,+20-861+Lublin&hl=pl&z=16&output=embed"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer__inner">
+            <p class="footer__copy">&copy; 2026 Salon Anna — Fryzjer Damski · ul. Piękna 5, 20-861 Lublin</p>
+            <p class="footer__credit">All rights reserved. Made <a href="https://magweb.pl/" target="_blank" rel="noopener">MagWEB</a></p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="book-modal" id="bookModal" role="dialog" aria-label="Umów wizytę" aria-hidden="true">
+        <div class="book-modal__card">
+            <button class="book-modal__close" id="bookModalClose" aria-label="Zamknij">&times;</button>
+            <img src="img/hero.jpg" alt="" class="book-modal__img">
+            <div class="book-modal__body">
+                <h3 class="book-modal__title serif">Umów wizytę w Salonie Anna</h3>
+                <p class="book-modal__desc">Zadzwoń — chętnie pomożemy wybrać termin. Przy kawie i bez pośpiechu, po sąsiedzku.</p>
+                <div class="book-modal__actions">
+                    <a href="tel:+48811234567" class="btn btn--primary" style="width:100%;">Zadzwoń: +48 81 123 45 67</a>
+                    <a href="https://m.me/magda.zubik.1" class="btn btn--ghost" style="width:100%;" target="_blank" rel="noopener">Napisz na Messengerze</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Hub: Phone / Messenger -->
+    <div class="contact-hub" id="contactHub">
+        <button class="contact-hub__toggle" id="contactHubToggle" aria-label="Otwórz opcje kontaktu" aria-expanded="false">
+            <span class="contact-hub__toggle-icon">
+                <svg class="phone-ring" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+            </span>
+            <span class="contact-hub__toggle-text">Kontakt</span>
+        </button>
+        <div class="contact-hub__menu" id="contactHubMenu">
+            <a href="tel:+48811234567" class="contact-hub__action contact-hub__action--phone" aria-label="Zadzwoń: +48 81 123 45 67">
+                <span class="contact-hub__action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                Zadzwoń
+            </a>
+            <a href="https://m.me/magda.zubik.1" class="contact-hub__action contact-hub__action--messenger" target="_blank" rel="noopener" aria-label="Napisz na Messengerze Facebook">
+                <span class="contact-hub__action-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.191 14.963-3.055-3.26-5.963 3.26L10.732 8.1l3.13 3.26 5.887-3.26-3.558 6.863z"/></svg>
+                </span>
+                Messenger
+            </a>
+        </div>
+    </div>
+
+    <div id="fb-root"></div>
+    <div class="social-backdrop" id="socialBackdrop" aria-hidden="true"></div>
+
+    <div class="social-rails">
+        <button class="social-tab social-tab--fb" id="fbTab" aria-label="Pokaż ostatnie wpisy z Facebooka" aria-expanded="false" aria-controls="fbPanel">
+            <span class="social-tab-pulse" id="fbPulse" aria-hidden="true"></span>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span class="social-tab-label">Facebook</span>
+        </button>
+        <button class="social-tab social-tab--ig" id="igTab" aria-label="Pokaż ostatnie wpisy z Instagrama" aria-expanded="false" aria-controls="igPanel">
+            <span class="social-tab-pulse" id="igPulse" aria-hidden="true"></span>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.413.56.218.96.477 1.38.896.42.42.679.819.896 1.38.164.422.36 1.057.413 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.218.56-.477.96-.896 1.38-.42.42-.819.679-1.38.896-.422.164-1.057.36-2.227.413-1.265.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.413-.56-.218-.96-.477-1.38-.896-.42-.42-.679-.819-.896-1.38-.164-.422-.36-1.057-.413-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.413-2.227.218-.56.477-.96.896-1.38.42-.42.819-.679 1.38-.896.422-.164 1.057-.36 2.227-.413 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.014 7.052.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.059 1.277.261 2.147.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.297 1.636.499 2.913.558C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.059 2.147-.261 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.336 1.384-2.126.297-.766.499-1.636.558-2.913.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.059-1.277-.261-2.147-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319.935 20.65.522 19.861.217 19.095-.08 18.225-.282 16.948-.34 15.668-.014 15.259 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/><circle cx="18.406" cy="5.594" r="1.44"/></svg>
+            <span class="social-tab-label">Instagram</span>
+        </button>
+    </div>
+
+    <aside class="social-panel" id="fbPanel" aria-hidden="true" aria-label="Wpisy z Facebooka">
+        <div class="social-panel__header social-panel__header--fb">
+            <div class="social-panel__heading">
+                <div class="social-panel__title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <span id="fbPageName">Salon Anna</span>
+                </div>
+                <div class="social-panel__subtitle">Ostatnie wpisy z Facebooka</div>
+            </div>
+            <button class="social-panel__close" id="fbClose" aria-label="Zamknij panel Facebook">&times;</button>
+        </div>
+        <div class="social-panel__feed" id="fbFeedWrap">
+            <div class="social-panel__loader" id="fbLoader">
+                <div class="social-panel__loader-dots social-panel__loader-dots--fb"><span></span><span></span><span></span></div>
+                Ładowanie wpisów…
+            </div>
+            <div class="social-panel__widget" id="fbWidget" hidden>
+                <div
+                    class="fb-page"
+                    id="fbPageEmbed"
+                    data-tabs="timeline"
+                    data-width="360"
+                    data-height="700"
+                    data-small-header="true"
+                    data-adapt-container-width="true"
+                    data-hide-cover="true"
+                    data-show-facepile="false">
+                </div>
+            </div>
+        </div>
+        <div class="social-panel__footer">
+            <a href="https://www.facebook.com/RepublikaTV/" class="social-panel__link social-panel__link--fb" id="fbProfileLink" target="_blank" rel="noopener">
+                Otwórz profil na Facebooku →
+            </a>
+        </div>
+    </aside>
+
+    <aside class="social-panel" id="igPanel" aria-hidden="true" aria-label="Wpisy z Instagrama">
+        <div class="social-panel__header social-panel__header--ig">
+            <div class="social-panel__heading">
+                <div class="social-panel__title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.413.56.218.96.477 1.38.896.42.42.679.819.896 1.38.164.422.36 1.057.413 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.413 2.227-.218.56-.477.96-.896 1.38-.42.42-.819.679-1.38.896-.422.164-1.057.36-2.227.413-1.265.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.413-.56-.218-.96-.477-1.38-.896-.42-.42-.679-.819-.896-1.38-.164-.422-.36-1.057-.413-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.413-2.227.218-.56.477-.96.896-1.38.42-.42.819-.679 1.38-.896.422-.164 1.057-.36 2.227-.413 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.014 7.052.072 5.775.131 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.059 1.277.261 2.147.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.297 1.636.499 2.913.558C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.059 2.147-.261 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.336 1.384-2.126.297-.766.499-1.636.558-2.913.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.059-1.277-.261-2.147-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319.935 20.65.522 19.861.217 19.095-.08 18.225-.282 16.948-.34 15.668-.014 15.259 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/><circle cx="18.406" cy="5.594" r="1.44"/></svg>
+                    <span id="igPageName">Salon Anna</span>
+                </div>
+                <div class="social-panel__subtitle">Ostatnie wpisy z Instagrama</div>
+            </div>
+            <button class="social-panel__close" id="igClose" aria-label="Zamknij panel Instagram">&times;</button>
+        </div>
+        <div class="social-panel__feed" id="igFeedWrap">
+            <div class="social-panel__loader" id="igLoader">
+                <div class="social-panel__loader-dots social-panel__loader-dots--ig"><span></span><span></span><span></span></div>
+                Ładowanie wpisów…
+            </div>
+        </div>
+        <div class="social-panel__footer">
+            <a href="https://www.instagram.com/" class="social-panel__link social-panel__link--ig" id="igProfileLink" target="_blank" rel="noopener">
+                Otwórz profil na Instagramie →
+            </a>
+        </div>
+    </aside>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Podgląd zdjęcia">
+        <button class="lightbox__close" id="lightboxClose" aria-label="Zamknij">&times;</button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Salon Anna",
+        "description": "Fryzjer damski na osiedlu w Lublinie",
+        "image": "img/hero.jpg",
+        "telephone": "+48811234567",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ul. Piękna 5",
+            "addressLocality": "Lublin",
+            "postalCode": "20-861",
+            "addressCountry": "PL"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.2260,
+            "longitude": 22.5712
+        },
+        "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
+        ],
+        "priceRange": "$$",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "120"
+        },
+        "sameAs": "https://www.facebook.com/RepublikaTV/"
+    }
+    </script>
+
+    <script>
+        const SALON = {
+            phone: '+48811234567',
+            phoneDisplay: '+48 81 123 45 67',
+            messenger: 'magda.zubik.1',
+            facebook: 'https://www.facebook.com/RepublikaTV/',
+            facebookName: 'Salon Anna',
+            instagram: 'https://www.instagram.com/',
+            address: 'ul. Piękna 5, 20-861 Lublin'
+        };
+
+        const nav = document.getElementById('nav');
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        /* ── Booking Modal ── */
+        const bookModal = document.getElementById('bookModal');
+        const bookModalClose = document.getElementById('bookModalClose');
+
+        function openBooking() {
+            burger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            bookModal.classList.add('open');
+            bookModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function isSocialPanelOpen() {
+            return document.getElementById('fbPanel').classList.contains('open') ||
+                document.getElementById('igPanel').classList.contains('open');
+        }
+
+        function closeBooking() {
+            bookModal.classList.remove('open');
+            bookModal.setAttribute('aria-hidden', 'true');
+            if (!lightbox.classList.contains('open') && !isSocialPanelOpen()) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.querySelectorAll('[data-open-booking]').forEach(el => {
+            el.addEventListener('click', openBooking);
+        });
+        bookModalClose.addEventListener('click', closeBooking);
+        bookModal.addEventListener('click', (e) => { if (e.target === bookModal) closeBooking(); });
+
+        /* ── Service Categories ── */
+        const svcCats = document.querySelectorAll('.svc-cat');
+        const svcPanels = document.querySelectorAll('[data-svc-panel]');
+
+        function showSvcPanel(id) {
+            svcPanels.forEach(p => p.classList.toggle('active', p.dataset.svcPanel === id));
+            svcCats.forEach(c => c.style.background = c.dataset.svc === id ? 'var(--blush)' : '');
+        }
+
+        svcCats.forEach(cat => {
+            cat.addEventListener('click', () => showSvcPanel(cat.dataset.svc));
+        });
+        showSvcPanel('cut');
+
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        burger.addEventListener('click', () => {
+            const open = burger.classList.toggle('open');
+            mobileMenu.classList.toggle('open', open);
+            burger.setAttribute('aria-expanded', open);
+            mobileMenu.setAttribute('aria-hidden', !open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
+        });
+
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(el => observer.observe(el));
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        const galleryTrack = document.getElementById('galleryTrack');
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+
+        function getGalleryScrollStep() {
+            const item = galleryTrack?.querySelector('.gallery__item');
+            if (!item) return 300;
+            const grid = galleryTrack.querySelector('.gallery__grid');
+            const gap = grid ? parseFloat(getComputedStyle(grid).gap) || 16 : 16;
+            return item.offsetWidth + gap;
+        }
+
+        function updateGalleryNav() {
+            if (!galleryTrack || !galleryPrev || !galleryNext) return;
+            const maxScroll = galleryTrack.scrollWidth - galleryTrack.clientWidth;
+            galleryPrev.disabled = galleryTrack.scrollLeft <= 2;
+            galleryNext.disabled = galleryTrack.scrollLeft >= maxScroll - 2;
+        }
+
+        galleryPrev?.addEventListener('click', () => {
+            galleryTrack.scrollBy({ left: -getGalleryScrollStep(), behavior: 'smooth' });
+        });
+
+        galleryNext?.addEventListener('click', () => {
+            galleryTrack.scrollBy({ left: getGalleryScrollStep(), behavior: 'smooth' });
+        });
+
+        galleryTrack?.addEventListener('scroll', updateGalleryNav, { passive: true });
+        window.addEventListener('resize', updateGalleryNav);
+        updateGalleryNav();
+
+        document.querySelectorAll('.gallery__item').forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.dataset.full;
+                const alt = item.querySelector('img').alt;
+                lightboxImg.src = src;
+                lightboxImg.alt = alt;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            if (!bookModal.classList.contains('open') && !isSocialPanelOpen()) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        /* ── Contact Hub ── */
+        const contactHub = document.getElementById('contactHub');
+        const contactHubToggle = document.getElementById('contactHubToggle');
+
+        contactHubToggle.addEventListener('click', () => {
+            const open = contactHub.classList.toggle('open');
+            contactHubToggle.setAttribute('aria-expanded', open);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!contactHub.contains(e.target)) {
+                contactHub.classList.remove('open');
+                contactHubToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        /* ── Social Panels (Facebook + Instagram) ── */
+        const socialBackdrop = document.getElementById('socialBackdrop');
+        const fbTab = document.getElementById('fbTab');
+        const fbPanel = document.getElementById('fbPanel');
+        const fbClose = document.getElementById('fbClose');
+        const fbProfileLink = document.getElementById('fbProfileLink');
+        const fbPageEmbed = document.getElementById('fbPageEmbed');
+        const fbPageName = document.getElementById('fbPageName');
+        const fbLoader = document.getElementById('fbLoader');
+        const fbWidget = document.getElementById('fbWidget');
+        const fbPulse = document.getElementById('fbPulse');
+        let fbSdkLoading = false;
+        let fbFeedRendered = false;
+
+        const igTab = document.getElementById('igTab');
+        const igPanel = document.getElementById('igPanel');
+        const igClose = document.getElementById('igClose');
+        const igProfileLink = document.getElementById('igProfileLink');
+        const igPageName = document.getElementById('igPageName');
+        const igPulse = document.getElementById('igPulse');
+
+        fbPageName.textContent = SALON.facebookName;
+        fbPageEmbed.setAttribute('data-href', SALON.facebook);
+        fbProfileLink.href = SALON.facebook;
+        igPageName.textContent = SALON.facebookName;
+        igProfileLink.href = SALON.instagram || 'https://www.instagram.com/';
+
+        if (localStorage.getItem('salonAnnaFbSeen')) fbPulse.classList.add('hidden');
+        if (localStorage.getItem('salonAnnaIgSeen')) igPulse.classList.add('hidden');
+
+        function loadFacebookSdk() {
+            if (window.FB || fbSdkLoading) return;
+            fbSdkLoading = true;
+            window.fbAsyncInit = function () {
+                FB.init({ xfbml: false, version: 'v21.0' });
+                renderFbFeed();
+            };
+            const script = document.createElement('script');
+            script.async = true;
+            script.defer = true;
+            script.crossOrigin = 'anonymous';
+            script.src = 'https://connect.facebook.net/pl_PL/sdk.js';
+            document.body.appendChild(script);
+        }
+
+        function renderFbFeed() {
+            if (fbFeedRendered || !window.FB) return;
+            fbFeedRendered = true;
+            fbLoader.hidden = true;
+            fbWidget.hidden = false;
+            FB.XFBML.parse(fbWidget, () => { fbLoader.hidden = true; });
+        }
+
+        const SOCIAL_PANELS = {
+            fb: {
+                tab: fbTab, panel: fbPanel, pulse: fbPulse, seenKey: 'salonAnnaFbSeen',
+                onOpen: () => { loadFacebookSdk(); if (window.FB) renderFbFeed(); }
+            },
+            ig: {
+                tab: igTab, panel: igPanel, pulse: igPulse, seenKey: 'salonAnnaIgSeen',
+                onOpen: () => {}
+            }
+        };
+
+        function openSocialPanel(name) {
+            const target = SOCIAL_PANELS[name];
+            if (!target) return;
+            Object.entries(SOCIAL_PANELS).forEach(([key, cfg]) => {
+                if (key !== name) closeSocialPanelEl(cfg);
+            });
+            target.panel.classList.add('open');
+            target.tab.setAttribute('aria-expanded', 'true');
+            target.panel.setAttribute('aria-hidden', 'false');
+            localStorage.setItem(target.seenKey, '1');
+            target.pulse.classList.add('hidden');
+            socialBackdrop.classList.add('visible');
+            socialBackdrop.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            target.onOpen();
+        }
+
+        function closeSocialPanelEl(cfg) {
+            cfg.panel.classList.remove('open');
+            cfg.tab.setAttribute('aria-expanded', 'false');
+            cfg.panel.setAttribute('aria-hidden', 'true');
+        }
+
+        function closeAllSocialPanels() {
+            Object.values(SOCIAL_PANELS).forEach(closeSocialPanelEl);
+            socialBackdrop.classList.remove('visible');
+            socialBackdrop.setAttribute('aria-hidden', 'true');
+            if (!bookModal.classList.contains('open') && !lightbox.classList.contains('open')) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        fbTab.addEventListener('click', () => {
+            fbPanel.classList.contains('open') ? closeAllSocialPanels() : openSocialPanel('fb');
+        });
+        igTab.addEventListener('click', () => {
+            igPanel.classList.contains('open') ? closeAllSocialPanels() : openSocialPanel('ig');
+        });
+        fbClose.addEventListener('click', closeAllSocialPanels);
+        igClose.addEventListener('click', closeAllSocialPanels);
+        socialBackdrop.addEventListener('click', closeAllSocialPanels);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeBooking();
+                closeAllSocialPanels();
+                contactHub.classList.remove('open');
+                contactHubToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html>

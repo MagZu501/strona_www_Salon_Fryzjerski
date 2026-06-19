@@ -1,6 +1,6 @@
 # Salon Anna — Fryzjer Damski | Lublin
 
-![Salon Anna](img/Salon fryzjerski.PNG)
+![Salon Anna](img/Salon%20fryzjerski.PNG)
 
 **Twój sąsiedzki salon fryzjerski na osiedlu Piękna w Lublinie.**
 
@@ -31,8 +31,7 @@ ul. Piękna 5
 
 Strona internetowa została stworzona jako nowoczesna, responsywna wizytówka salonu.
 
-**Link do strony:**  
-[[https://twoj-adres-strony.pl](https://salonanna.netlify.app/)]([https://twoj-adres-strony.pl](https://salonanna.netlify.app/))
+**Link do strony:** [salonanna.netlify.app](https://salonanna.netlify.app/)
 
 ---
 

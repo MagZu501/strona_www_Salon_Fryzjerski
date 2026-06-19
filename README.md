@@ -1,6 +1,6 @@
 # Salon Anna — Fryzjer Damski | Lublin
 
-![Salon Anna](Salon fryzjerski.PNG)
+![Salon Anna](img/Salon fryzjerski.PNG)
 
 **Twój sąsiedzki salon fryzjerski na osiedlu Piękna w Lublinie.**
 
